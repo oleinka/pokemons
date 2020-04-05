@@ -1,3 +1,10 @@
 body {
   background-color: rgb(17, 17, 192);
+  color: white;
+}
+header {
+  height: 150px;
+}
+.pokemonList {
+  margin: 0 100px;
 }
