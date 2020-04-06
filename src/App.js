@@ -41,7 +41,6 @@ const App = () => {
               }).map(({name, url}) => (
               <li>
                 <p>{name}</p>
-                <p>{url}</p>
                 <button onClick={() => {
                   getPokemonData(url)
                   }}>Pokaż w Pokedexie

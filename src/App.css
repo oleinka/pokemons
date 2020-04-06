@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 body {
   background-color: rgb(17, 17, 192);
+  font-family: 'Fredoka One', cursive;
   color: white;
 }
 header {
@@ -7,4 +9,16 @@ header {
 }
 .pokemonList {
   margin: 0 100px;
+  padding: 20px 0;
+  background-color: #FF6B57;
+  text-transform: uppercase;
+}
+.pokemonList ul {
+  list-style-type: none;
+}
+.pokemonList li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px 10px 0;
+
 }
