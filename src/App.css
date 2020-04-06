@@ -11,7 +11,9 @@ header {
   margin: 0 100px;
   padding: 20px 0;
   background-color: #FF6B57;
+  border: 5px solid #423B3B;
   text-transform: uppercase;
+  letter-spacing: 10px;
 }
 .pokemonList ul {
   list-style-type: none;
