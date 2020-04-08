@@ -9,7 +9,7 @@ const App = () => {
   const [prevLink, setPrevLink] = useState(null);
   const [page, setPage] = useState(1);
   const [pokemons, setPokemons] = useState([]);
-  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/?offset=20&limit=1000');
+  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/?limit=1000');
 
   useEffect(() => {
       axios.get(url)
@@ -27,16 +27,19 @@ const App = () => {
           setPokemons(response.data.results);
       })
   };
-  
+
   return (
     <>
     <Logo/>
     <div className={'pokemonDisplay'}>
-
+      <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png'/>
     </div>
     <div className={'pokemonList'}>
     <ul>
-    {pokemons.map(({name}) => (
+    {pokemons.filter((item, index) => {
+      return index < 10;
+      }).map(({name}) => 
+ (
       <li>
       <p>{name}</p>
       <button>Pokaż
