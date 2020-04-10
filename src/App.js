@@ -2,14 +2,15 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './App.css';
 import Logo from './components/Logo/Logo';
+import PokemonDisplay from './components/PokemonDisplay/PokemonDisplay';
 
 const App = () => {
-  const [pokemon, setPokemon] = useState(null);
   const [nextLink, setNextLink] = useState(null);
   const [prevLink, setPrevLink] = useState(null);
   const [page, setPage] = useState(1);
   const [pokemons, setPokemons] = useState([]);
   const [initUrl, setinitUrl] = useState('https://pokeapi.co/api/v2/pokemon');
+  const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
       axios.get(initUrl)
@@ -19,7 +20,6 @@ const App = () => {
           .catch(error => {
               console.error(error)
           })
-
   }, []);
 
   const getPokemonData = (initUrl) => {
@@ -31,14 +31,16 @@ const App = () => {
   const showPoke = (url) => {
     axios.get(url).then((response) => {
         setPokemon(response.data);
+        console.log("1")
     })
+    console.log("2")
   };
 
   return (
     <>
     <Logo/>
     <div className={'pokemonDisplay'}>
-      <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png'/>
+      {pokemon ? <PokemonDisplay pokemon={pokemon}/>: null}
     </div>
     <div className={'pokemonList'}>
     <ul>
@@ -46,7 +48,6 @@ const App = () => {
  ( 
       <li>
       <p>{poke.name}</p>
-      <p>{i}</p>
       <button onClick={()=>showPoke(poke.url)}>Pokaż
       </button>
       </li>
