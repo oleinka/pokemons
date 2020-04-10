@@ -9,10 +9,10 @@ const App = () => {
   const [prevLink, setPrevLink] = useState(null);
   const [page, setPage] = useState(1);
   const [pokemons, setPokemons] = useState([]);
-  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/?limit=1000');
+  const [initUrl, setinitUrl] = useState('https://pokeapi.co/api/v2/pokemon');
 
   useEffect(() => {
-      axios.get(url)
+      axios.get(initUrl)
           .then((response) => {
               setPokemons(response.data.results);
           })
@@ -22,10 +22,16 @@ const App = () => {
 
   }, []);
 
-  const getPokemonData = (url) => {
-      axios.get(url).then((response) => {
+  const getPokemonData = (initUrl) => {
+      axios.get(initUrl).then((response) => {
           setPokemons(response.data.results);
       })
+  };
+
+  const showPoke = (url) => {
+    axios.get(url).then((response) => {
+        setPokemon(response.data);
+    })
   };
 
   return (
@@ -36,13 +42,12 @@ const App = () => {
     </div>
     <div className={'pokemonList'}>
     <ul>
-    {pokemons.filter((item, index) => {
-      return index < 10;
-      }).map(({name}) => 
- (
+    {pokemons.map((poke,i) => 
+ ( 
       <li>
-      <p>{name}</p>
-      <button>Pokaż
+      <p>{poke.name}</p>
+      <p>{i}</p>
+      <button onClick={()=>showPoke(poke.url)}>Pokaż
       </button>
       </li>
       ))}
