@@ -31,16 +31,14 @@ const App = () => {
   const showPoke = (url) => {
     axios.get(url).then((response) => {
         setPokemon(response.data);
-        console.log("1")
     })
-    console.log("2")
   };
 
   return (
     <>
     <Logo/>
     <div className={'pokemonDisplay'}>
-      {pokemon ? <PokemonDisplay pokemon={pokemon}/>: null}
+      {pokemon ? <PokemonDisplay pokemon={pokemon}/>: <div className={'emptyScreen'}></div>}
     </div>
     <div className={'pokemonList'}>
     <ul>

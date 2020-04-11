@@ -26,8 +26,17 @@ body {
   margin: 100px 50px 0 50px;
   height: 300px;
   padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #FF6B57;
   border: 5px solid #423B3B;
   text-transform: uppercase;
   letter-spacing: 10px;
+}
+.emptyScreen {
+  background-color: white;
+  width: 90%;
+  height: 80%;
+  border: 5px solid #423B3B;
 }
