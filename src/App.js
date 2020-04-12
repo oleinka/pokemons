@@ -34,6 +34,24 @@ const App = () => {
     })
   };
 
+  const sortArray = (e) => {
+    const value = e.target.value
+    if (value === 'by-name-z') {
+      setPokemons([...pokemons.sort((a,b) =>{
+        const aName = a.name.toUpperCase();
+        const bName = b.name.toUpperCase();
+        return (aName > bName) ? -1 : (aName < bName) ? 1 : 0;
+       })])
+    }
+    if (value === 'by-name-a') {
+      setPokemons([...pokemons.sort((a,b) =>{
+        const aName = a.name.toUpperCase();
+        const bName = b.name.toUpperCase();
+        return (aName < bName) ? -1 : (aName > bName) ? 1 : 0;
+       })])
+    }
+  }
+
   return (
     <>
     <Logo/>
@@ -60,10 +78,8 @@ const App = () => {
         <button onClick={() => {
         setPage(page + 1)
           }}>NEXT</button>
-        <button onClick={() => {
-          }}>A</button>
-          <button onClick={() => {
-          }}>Z</button>
+        <button value='by-name-a' onClick={sortArray}>A</button>
+        <button value='by-name-z' onClick={sortArray}>Z</button>
       </div>
     </div>
     </>
