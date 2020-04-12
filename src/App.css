@@ -12,7 +12,10 @@ body {
   text-transform: uppercase;
   letter-spacing: 10px;
   height: 300px;
+}
+.pokeList {
   overflow-y: scroll;
+  height: 300px;
 }
 .pokemonList ul {
   list-style-type: none;
@@ -35,7 +38,7 @@ body {
   letter-spacing: 10px;
 }
 .emptyScreen {
-  background-color: white;
+  background-color: #423B3B;
   width: 90%;
   height: 80%;
   border: 5px solid #423B3B;

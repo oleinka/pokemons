@@ -9,7 +9,7 @@ const App = () => {
   const [prevLink, setPrevLink] = useState(null);
   const [page, setPage] = useState(1);
   const [pokemons, setPokemons] = useState([]);
-  const [initUrl, setinitUrl] = useState('https://pokeapi.co/api/v2/pokemon');
+  const [initUrl, setinitUrl] = useState('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1000');
   const [pokemon, setPokemon] = useState(null);
 
   useEffect(() => {
@@ -41,26 +41,31 @@ const App = () => {
       {pokemon ? <PokemonDisplay pokemon={pokemon}/>: <div className={'emptyScreen'}></div>}
     </div>
     <div className={'pokemonList'}>
-    <ul>
-    {pokemons.map((poke,i) => 
- ( 
-      <li>
-      <p>{poke.name}</p>
-      <button onClick={()=>showPoke(poke.url)}>Pokaż
-      </button>
-      </li>
-      ))}
-    </ul>
-    </div>
-
-
-    <button onClick={() => {
-        setPage(page - 1)
-    }}>Poprzednia strona
-    </button>
-    <button onClick={() => {
+      <div className={'pokeList'}>
+        <ul>
+        {pokemons.map((poke,i) => 
+          ( 
+          <li>
+          <p>{poke.name}</p>
+          <button onClick={()=>showPoke(poke.url)}>Pokaż
+          </button>
+          </li>
+          ))}
+        </ul>
+      </div>
+      <div className={'controlBars'}>
+        <button onClick={() => {
+          setPage(page - 1)
+          }}>PREV</button>
+        <button onClick={() => {
         setPage(page + 1)
-    }}>Następna strona</button>
+          }}>NEXT</button>
+        <button onClick={() => {
+          }}>A</button>
+          <button onClick={() => {
+          }}>Z</button>
+      </div>
+    </div>
     </>
   );
 }
