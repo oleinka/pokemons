@@ -11,11 +11,10 @@ body {
   border: 5px solid #423B3B;
   text-transform: uppercase;
   letter-spacing: 10px;
-  height: 300px;
 }
 .pokeList {
   overflow-y: scroll;
-  height: 300px;
+  height: 400px;
 }
 .pokemonList ul {
   list-style-type: none;

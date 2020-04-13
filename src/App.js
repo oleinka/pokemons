@@ -5,12 +5,12 @@ import Logo from './components/Logo/Logo';
 import PokemonDisplay from './components/PokemonDisplay/PokemonDisplay';
 
 const App = () => {
-  const [nextLink, setNextLink] = useState(null);
-  const [prevLink, setPrevLink] = useState(null);
   const [page, setPage] = useState(1);
   const [pokemons, setPokemons] = useState([]);
   const [initUrl, setinitUrl] = useState('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1000');
   const [pokemon, setPokemon] = useState(null);
+  const [lowerIndex, setLowerIndex] = useState(0);
+  const [upperIndex, setUpperIndex] = useState(10);
 
   useEffect(() => {
       axios.get(initUrl)
@@ -61,7 +61,12 @@ const App = () => {
     <div className={'pokemonList'}>
       <div className={'pokeList'}>
         <ul>
-        {pokemons.map((poke,i) => 
+        {pokemons.filter((poke, index) => { 
+            if (page) {
+            return index > lowerIndex && index <= upperIndex;
+            }
+            })
+          .map((poke,i) => 
           ( 
           <li>
           <p>{poke.name}</p>
@@ -73,11 +78,21 @@ const App = () => {
       </div>
       <div className={'controlBars'}>
         <button onClick={() => {
-          setPage(page - 1)
-          }}>PREV</button>
+          setPage(page - 1);
+          setLowerIndex(lowerIndex-10);
+          setUpperIndex(upperIndex-10);
+          console.log(lowerIndex);
+          console.log(upperIndex);
+          }
+          }>PREV</button>
         <button onClick={() => {
-        setPage(page + 1)
-          }}>NEXT</button>
+          setPage(page + 1);
+          setLowerIndex(lowerIndex+10);
+          setUpperIndex(upperIndex+10);
+          console.log(lowerIndex);
+          console.log(upperIndex);
+          }
+          }>NEXT</button>
         <button value='by-name-a' onClick={sortArray}>A</button>
         <button value='by-name-z' onClick={sortArray}>Z</button>
       </div>
