@@ -63,7 +63,7 @@ const App = () => {
         <ul>
         {pokemons.filter((poke, index) => { 
             if (page) {
-            return index > lowerIndex && index <= upperIndex;
+            return index >= lowerIndex && index < upperIndex;
             }
             })
           .map((poke,i) => 
@@ -78,21 +78,36 @@ const App = () => {
       </div>
       <div className={'controlBars'}>
         <button onClick={() => {
+          setPage(1);
+          setLowerIndex(0);
+          setUpperIndex(10);
+        }}>START</button>
+        <button onClick={() => {
+          if (page>1) {
           setPage(page - 1);
           setLowerIndex(lowerIndex-10);
           setUpperIndex(upperIndex-10);
-          console.log(lowerIndex);
-          console.log(upperIndex);
+          }
+          else {
+          setPage(page); 
+          setLowerIndex(lowerIndex);
+          setUpperIndex(upperIndex);
+          }
           }
           }>PREV</button>
         <button onClick={() => {
+          if (page<pokemons.length/10) {
           setPage(page + 1);
           setLowerIndex(lowerIndex+10);
           setUpperIndex(upperIndex+10);
-          console.log(lowerIndex);
-          console.log(upperIndex);
+          }
           }
           }>NEXT</button>
+        <button onClick={() => {
+          setPage(pokemons.length/10); 
+          setLowerIndex(pokemons.length-10);
+          setUpperIndex(pokemons.length);
+          }}>END</button>
         <button value='by-name-a' onClick={sortArray}>A</button>
         <button value='by-name-z' onClick={sortArray}>Z</button>
       </div>
