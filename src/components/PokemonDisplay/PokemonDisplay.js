@@ -12,7 +12,7 @@ return ( <>
     <img className={styles.pokemonImg} src={pokemon.sprites.front_default} alt='pokemon'/>
     <div>
         <p>{pokemon.name}</p>
-        <p>Typ: {pokemonType[0].type.name}</p>
+        <p>Typ: {pokemonType.map(({type})=>`${type.name} `)}</p>
         <p>Waga: {pokemon.weight}</p>
     </div>
 </div>

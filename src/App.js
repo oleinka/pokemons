@@ -22,12 +22,6 @@ const App = () => {
           })
   }, []);
 
-  const getPokemonData = (initUrl) => {
-      axios.get(initUrl).then((response) => {
-          setPokemons(response.data.results);
-      })
-  };
-
   const showPoke = (url) => {
     axios.get(url).then((response) => {
         setPokemon(response.data);
@@ -89,11 +83,6 @@ const App = () => {
               setPage(page - 1);
               setLowerIndex(lowerIndex-10);
               setUpperIndex(upperIndex-10);
-              }
-              else {
-              setPage(page); 
-              setLowerIndex(lowerIndex);
-              setUpperIndex(upperIndex);
               }
               }
               }>PREV</button>
