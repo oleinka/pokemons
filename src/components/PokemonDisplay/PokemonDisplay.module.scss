@@ -3,6 +3,10 @@
     width: 90%;
     height: 80%;
     border: 5px solid #423B3B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .pokemonImg {
     height: 50%;

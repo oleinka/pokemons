@@ -10,7 +10,7 @@ body {
   background-color: #FF6B57;
   border: 5px solid #423B3B;
   text-transform: uppercase;
-  letter-spacing: 10px;
+  letter-spacing: 2px;
 }
 .pokeList {
   overflow-y: scroll;
@@ -22,7 +22,12 @@ body {
 .pokemonList li {
   display: flex;
   justify-content: space-between;
-  padding: 10px 30px 10px 0;
+  align-items: center;
+  padding-right: 30px;
+}
+.pokemonList p {
+  margin: 0;
+  font-size: 15px;
 }
 .pokemonDisplay {
   margin: 100px 50px 0 50px;
@@ -34,11 +39,72 @@ body {
   background-color: #FF6B57;
   border: 5px solid #423B3B;
   text-transform: uppercase;
-  letter-spacing: 10px;
+  letter-spacing: 2px;
+}
+.pokeBtn {
+  margin: 8px 0;
+  box-shadow:inset 0px 1px 0px 0px #fff6af;
+  background-color:#DBDBDB;
+  border-radius:6px;
+  border:1px solid #DBDBDB;
+  cursor:pointer;
+  text-shadow:0px 1px 0px #ffee66;
+}
+.pokeBtn:hover {
+  background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background-color:#ffab23;
+}
+.pokeBtn:active {
+  position:relative;
+  top:1px;
 }
 .emptyScreen {
   background-color: #423B3B;
   width: 90%;
   height: 80%;
   border: 5px solid #423B3B;
+}
+.controlBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.paginationBar {
+  margin: 20px 0 0 20px;
+}
+.paginationBar button {
+  background-color: #423B3B;
+  color: white;
+  border: none;
+  padding: 5px;
+  margin-right: 5px;
+}
+.filter {
+  padding-top: 20px;
+}
+.filterBtn {
+  background: #423B3B;
+  color: white;
+  border-radius: 83%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 12px;
+}
+@media screen and (min-width: 768px) {
+  .pokedexWrapper {
+    display: flex;
+  }
+  .pokemonDisplay {
+    margin: 100px 0 0 50px;
+    width: 50%;
+    height: 60vh;
+  }
+  .pokemonList {
+    margin: 100px 50px 0 0;
+    width: 50%;
+  }
+  .pokeList {
+    height: 64vh;
+  }
 }

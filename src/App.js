@@ -54,62 +54,68 @@ const App = () => {
 
   return (
     <>
-    <Logo/>
-    <div className={'pokemonDisplay'}>
-      {pokemon ? <PokemonDisplay pokemon={pokemon}/>: <div className={'emptyScreen'}></div>}
-    </div>
-    <div className={'pokemonList'}>
-      <div className={'pokeList'}>
-        <ul>
-        {pokemons.filter((poke, index) => { 
-            if (page) {
-            return index >= lowerIndex && index < upperIndex;
-            }
-            })
-          .map((poke,i) => 
-          ( 
-          <li>
-          <p>{poke.name}</p>
-          <button onClick={()=>showPoke(poke.url)}>Pokaż
-          </button>
-          </li>
-          ))}
-        </ul>
+    <div className="pokedexWrapper">
+      <Logo/>
+      <div className={'pokemonDisplay'}>
+        {pokemon ? <PokemonDisplay pokemon={pokemon}/>: <div className={'emptyScreen'}></div>}
       </div>
-      <div className={'controlBars'}>
-        <button onClick={() => {
-          setPage(1);
-          setLowerIndex(0);
-          setUpperIndex(10);
-        }}>START</button>
-        <button onClick={() => {
-          if (page>1) {
-          setPage(page - 1);
-          setLowerIndex(lowerIndex-10);
-          setUpperIndex(upperIndex-10);
-          }
-          else {
-          setPage(page); 
-          setLowerIndex(lowerIndex);
-          setUpperIndex(upperIndex);
-          }
-          }
-          }>PREV</button>
-        <button onClick={() => {
-          if (page<pokemons.length/10) {
-          setPage(page + 1);
-          setLowerIndex(lowerIndex+10);
-          setUpperIndex(upperIndex+10);
-          }
-          }
-          }>NEXT</button>
-        <button onClick={() => {
-          setPage(pokemons.length/10); 
-          setLowerIndex(pokemons.length-10);
-          setUpperIndex(pokemons.length);
-          }}>END</button>
-        <button value='by-name-a' onClick={sortArray}>A</button>
-        <button value='by-name-z' onClick={sortArray}>Z</button>
+      <div className={'pokemonList'}>
+        <div className={'pokeList'}>
+          <ul>
+          {pokemons.filter((poke, index) => { 
+              if (page) {
+              return index >= lowerIndex && index < upperIndex;
+              }
+              })
+            .map((poke,i) => 
+            ( 
+            <li>
+            <p>{poke.name}</p>
+            <button className='pokeBtn' onClick={()=>showPoke(poke.url)}>Pokaż
+            </button>
+            </li>
+            ))}
+          </ul>
+        </div>
+        <div className='controlBar'>
+          <div className='paginationBar'>
+            <button onClick={() => {
+              setPage(1);
+              setLowerIndex(0);
+              setUpperIndex(10);
+            }}>START</button>
+            <button onClick={() => {
+              if (page>1) {
+              setPage(page - 1);
+              setLowerIndex(lowerIndex-10);
+              setUpperIndex(upperIndex-10);
+              }
+              else {
+              setPage(page); 
+              setLowerIndex(lowerIndex);
+              setUpperIndex(upperIndex);
+              }
+              }
+              }>PREV</button>
+            <button onClick={() => {
+              if (page<pokemons.length/10) {
+              setPage(page + 1);
+              setLowerIndex(lowerIndex+10);
+              setUpperIndex(upperIndex+10);
+              }
+              }
+              }>NEXT</button>
+            <button onClick={() => {
+              setPage(pokemons.length/10); 
+              setLowerIndex(pokemons.length-10);
+              setUpperIndex(pokemons.length);
+              }}>END</button>
+          </div>
+          <div className='filter'>
+            <button className='filterBtn' value='by-name-a' onClick={sortArray}>A</button>
+            <button className='filterBtn' value='by-name-z' onClick={sortArray}>Z</button>
+          </div>
+        </div>
       </div>
     </div>
     </>

@@ -6,8 +6,10 @@ const PokemonDisplay = ({pokemon}) => {
 return ( <>
 <div className={styles.screen}>
     <img className={styles.pokemonImg} src={pokemon.sprites.front_default} alt='pokemon'/>
-    <div>Name: {pokemon.name}</div>
-    <div>Type: {pokemon.types[0].type.name}</div>
+    <div>
+        <p>{pokemon.name}</p>
+        <p>Type: {pokemon.types[0].type.name}</p>
+    </div>
 </div>
 </>
 );
