@@ -13,7 +13,6 @@ body {
   letter-spacing: 2px;
 }
 .pokeList {
-  overflow-y: scroll;
   height: 400px;
 }
 .pokemonList ul {
